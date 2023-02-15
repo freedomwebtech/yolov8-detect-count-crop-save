@@ -70,15 +70,13 @@ while True:
         x3,y3,x4,y4,id=bbox
         results=cv2.pointPolygonTest(np.array(area,np.int32),((x4,y4)),False)
         cv2.rectangle(frame,(x3,y3),(x4,y4),(0,255,0),2)
-#              cv2.imshow(str(x3*y3),crop)
         cv2.circle(frame,(x4,y4),4,(255,0,255),-1)
         cv2.putText(frame,str(id),(x3,y3),cv2.FONT_HERSHEY_COMPLEX,0.5,(255,0,0),1)
         if results>=0:
             crop=frame[y3:y4,x3:x4]
             imgwrite(crop)
-            cv2.imshow(str(id),crop) 
+#            cv2.imshow(str(id),crop) 
             area_c.add(id)
-#              list.append([c])
     cv2.polylines(frame,[np.array(area,np.int32)],True,(255,0,0),2)
     print(area_c)
     k=len(area_c)
